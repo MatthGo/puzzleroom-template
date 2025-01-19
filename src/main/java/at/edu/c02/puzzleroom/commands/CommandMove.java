@@ -26,10 +26,10 @@ public class CommandMove implements Command {
             throw new PuzzleRoomInvalidMoveException();
         }
         boolean success = switch(direction) {
-            case "left" -> player.moveLeft();
-            case "right" -> player.moveRight();
-            case "up" -> player.moveUp();
-            case "down" -> player.moveDown();
+            case "left", "l" -> player.moveLeft();
+            case "right", "r" -> player.moveRight();
+            case "up", "u" -> player.moveUp();
+            case "down", "d" -> player.moveDown();
             default -> throw new PuzzleRoomInvalidArgumentsException();
         };
 
