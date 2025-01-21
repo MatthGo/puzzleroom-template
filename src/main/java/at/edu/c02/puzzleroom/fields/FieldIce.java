@@ -1,4 +1,5 @@
 package at.edu.c02.puzzleroom.fields;
+
 import at.edu.c02.puzzleroom.Direction;
 import at.edu.c02.puzzleroom.GameBoard;
 
@@ -10,7 +11,11 @@ public class FieldIce extends BaseField {
 
 	@Override
 	public boolean enterField(Direction direction) {
+
+		gameBoard.getPlayer().walkStep();
+
 		System.out.println("You stepped on an ice field!");
+
 		// sliding for columbine
 		return slideInDirection(direction);
 	}
@@ -18,7 +23,7 @@ public class FieldIce extends BaseField {
 	private boolean slideInDirection(Direction direction) {
 		// Calculate the next position based on the direction.
 		int newRow = row, newCol = col;
-		BaseField nextField;
+		BaseField nextField = this;
 		//loop while next field is a FieldIce
 		do {
 			switch (direction) {
@@ -27,17 +32,16 @@ public class FieldIce extends BaseField {
 				case Direction.Right -> newCol += 1;
 				case Direction.Left -> newCol -= 1;
 			}
+
+			if (gameBoard.getField(newRow, newCol) instanceof FieldWall)
+				break;
+
 			nextField = (BaseField) gameBoard.getField(newRow, newCol);
+
 		} while (nextField instanceof FieldIce);
 
-		// check if you can enter the next field.
-		if (nextField != null && nextField.enterField(direction)) {
-			gameBoard.getPlayer().setPosition(newRow, newCol);
-			return true;
-		} else {
-			System.out.println("You can't slide further!");
-			return false;
-		}
+		gameBoard.getPlayer().setPosition(nextField.row, nextField.col);
+		return true;
 	}
 
 	@Override

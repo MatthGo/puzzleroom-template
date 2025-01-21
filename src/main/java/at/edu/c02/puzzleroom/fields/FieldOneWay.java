@@ -15,6 +15,7 @@ public class FieldOneWay extends BaseField {
 	@Override
 	public boolean leaveField(Direction direction) {
 		// only move if have the right direction
+
 		return direction == allowedDirection;
 	}
 
@@ -23,6 +24,7 @@ public class FieldOneWay extends BaseField {
 
 	@Override
 	public boolean enterField(Direction direction) {
+		gameBoard.getPlayer().walkStep();
 		setPlayerPositionToField();
 		return true;}
 }
