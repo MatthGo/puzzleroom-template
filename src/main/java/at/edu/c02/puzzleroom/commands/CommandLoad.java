@@ -31,10 +31,7 @@ public class CommandLoad implements Command {
             throw new PuzzleRoomInvalidArgumentsException();
         }
 
-		if(arguments[0].contains("/src/test/resources"))
 			filePath = arguments[0];
-		else
-        	filePath = "src/test/resources/" + arguments[0];
     }
 
     public void execute(GameBoard gameBoard) throws PuzzleRoomException {
