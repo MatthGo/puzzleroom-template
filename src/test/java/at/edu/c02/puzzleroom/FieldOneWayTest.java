@@ -14,7 +14,7 @@ public class FieldOneWayTest {
 	public void testFieldOneWayPositive() throws Exception {
 		GameBoard gameBoard = new GameBoardImpl();
 		// Load a maze with FieldOneWay for positive tests
-		new CommandLoad(new String[]{"src/test/resources/simple_fieldOneWay.maze"}).execute(gameBoard);
+		new CommandLoad(new String[]{"src/test/resources/simple_FieldOneWay.maze"}).execute(gameBoard);
 		Player player = gameBoard.getPlayer();
 
 		// Initial state validation
