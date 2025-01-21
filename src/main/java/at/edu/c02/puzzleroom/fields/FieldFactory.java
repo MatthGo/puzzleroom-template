@@ -1,5 +1,6 @@
 package at.edu.c02.puzzleroom.fields;
 
+import at.edu.c02.puzzleroom.Direction;
 import at.edu.c02.puzzleroom.GameBoard;
 import at.edu.c02.puzzleroom.exceptions.PuzzleRoomException;
 import at.edu.c02.puzzleroom.exceptions.PuzzleRoomInvalidFileException;
@@ -32,6 +33,11 @@ public class FieldFactory {
             case '#' -> new FieldWall(gameBoard, fieldName, row, col);
             case 'o' -> new FieldStart(gameBoard, fieldName, row, col);
             case 'x' -> new FieldFinish(gameBoard, fieldName, row, col);
+            case '>' -> new FieldOneWay(gameBoard, fieldName, row, col, Direction.Right);
+            case '<' -> new FieldOneWay(gameBoard, fieldName, row, col, Direction.Left);
+            case '^' -> new FieldOneWay(gameBoard, fieldName, row, col, Direction.Up);
+            case 'v' -> new FieldOneWay(gameBoard, fieldName, row, col, Direction.Down);
+            case '@' -> new FieldIce(gameBoard, fieldName, row, col);
             default -> throw new PuzzleRoomInvalidFileException("Field " + fieldName + " is not a valid field");
         };
     }
