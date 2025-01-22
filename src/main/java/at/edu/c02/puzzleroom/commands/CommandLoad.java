@@ -30,7 +30,8 @@ public class CommandLoad implements Command {
         if (arguments.length != 1) {
             throw new PuzzleRoomInvalidArgumentsException();
         }
-        filePath = arguments[0];
+
+			filePath = arguments[0];
     }
 
     public void execute(GameBoard gameBoard) throws PuzzleRoomException {
